@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A simple step-by-step guide for issuing compliant eTIMS invoices in Kenya (KRA exchange rates, credit notes, download steps)." />
+  <title>eTIMS Invoice Steps (Kenya) — Tindi Mercy</title>
+  
+  <!-- Beautiful fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b0f19;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.08);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --border: rgba(255,255,255,0.14);
+      --accent: #7c3aed; /* violet */
+      --accent2: #22c55e; /* green */
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --radius: 18px;
+    }
+
+    /* Light theme tokens */
+    [data-theme="light"]{
+      --bg: #f7f7fb;
+      --card: rgba(10,18,40,0.06);
+      --card2: rgba(10,18,40,0.08);
+      --text: rgba(10,18,40,0.92);
+      --muted: rgba(10,18,40,0.72);
+      --border: rgba(10,18,40,0.12);
+      --shadow: 0 10px 30px rgba(10,18,40,0.12);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 700px at 10% 10%, rgba(124,58,237,0.18), transparent 55%),
+        radial-gradient(1000px 600px at 90% 15%, rgba(34,197,94,0.14), transparent 55%),
+        radial-gradient(900px 600px at 60% 95%, rgba(59,130,246,0.12), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: 'liga' 1, 'calt' 1;
+    }
+
+    a{ color: inherit; }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 18px 60px; }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px; margin-bottom: 20px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 12px;
+    }
+    .logo{
+      width: 44px; height: 44px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.95), rgba(34,197,94,0.85));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{ margin:0; font-size: 16px; letter-spacing: -0.01em; font-weight: 600; }
+    .brand p{ margin:2px 0 0; font-size: 12px; color: var(--muted); font-weight: 500; }
+
+    .controls{
+      display:flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    }
+    .btn{
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      display:flex; gap:8px; align-items:center;
+      user-select:none;
+    }
+    .btn:hover{ background: var(--card2); }
+    .btn:active{ transform: scale(0.98); }
+    .btn small{ color: var(--muted); font-weight: 600; }
+
+    .hero{
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .hero h2{ margin: 0 0 6px; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+    .hero p{ margin: 0; color: var(--muted); font-weight: 500; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1.2fr 0.8fr; }
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .card h3{ margin: 0 0 10px; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+    .muted{ color: var(--muted); }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding: 6px 10px; border-radius: 999px;
+      background: rgba(124,58,237,0.14);
+      border: 1px solid rgba(124,58,237,0.25);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      white-space: nowrap;
+    }
+    .pill.green{
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.22);
+    }
+
+    ol.steps{ margin: 0; padding-left: 18px; }
+    ol.steps li{ margin: 10px 0; }
+    .callout{
+      border-left: 4px solid var(--accent);
+      padding: 10px 12px;
+      background: rgba(124,58,237,0.10);
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    .code{
+      font-family: var(--mono);
+      background: rgba(0,0,0,0.22);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      overflow-x: auto;
+      margin: 10px 0 0;
+      font-size: 12.5px;
+    }
+    [data-theme="light"] .code{
+      background: rgba(10,18,40,0.06);
+    }
+
+    .check{
+      display:flex; align-items:flex-start; gap: 10px;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px dashed var(--border);
+      background: rgba(255,255,255,0.03);
+      margin: 8px 0;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 3px;
+      background: var(--accent2);
+      margin-top: 5px;
+      flex: 0 0 auto;
+    }
+
+    footer{
+      margin-top: 18px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    footer strong{ color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>eTIMS Invoice Steps (Kenya)</h1>
+          <p>Quick, repeatable checklist for monthly invoicing</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+          <span><small id="themeLabel">Dark</small></span>
+        </button>
+
+        <button class="btn" id="copyBtn" type="button" title="Copy exchange-rate note">
+          📋 <small>Copy note</small>
+        </button>
+      </div>
+    </div>
+
+    <section class="hero">
+      <h2>Monthly eTIMS invoice workflow</h2>
+      <p>Use official KRA weekly exchange rates, invoice in KES, and add a clean audit note. Keep this page open while you invoice.</p>
+
+      <div style="margin-top:12px;">
+        <span class="pill">Buyer PIN: <strong>[Enter buyer PIN]</strong></span>
+        <span class="pill">Buyer Name: <strong>[Enter buyer company name]</strong></span>
+        <span class="pill green">Buyer Mobile: <strong>[Enter buyer mobile]</strong></span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h3>First-time setup (once)</h3>
+        <div class="check"><div class="dot"></div>
+          <div>
+            Register your service item (e.g., <strong>Professional Services</strong>) in <strong>Item Management</strong>.
+            <div class="muted">Tax Type: D – Non VAT (if you're non-VAT). Choose a simple quantity unit like "Number".</div>
+          </div>
+        </div>
+        <div class="check"><div class="dot"></div>
+          <div>
+            Register your customer (if prompted) in <strong>Customer Management</strong>.
+            <div class="muted">Use the buyer PIN + legal name exactly as provided by your client.</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Tip:</strong> eTIMS may lock approved invoices. If you need to correct, you'll use a <strong>Credit Note</strong> and re-issue.
+        </div>
+      </section>
+
+      <aside class="card">
+        <h3>Quick tools</h3>
+        <p class="muted" style="margin-top:0;">Use these every month:</p>
+
+        <div class="check"><div class="dot"></div>
+          <div>
+            <strong>Get the KRA exchange rate</strong>
+            <div class="muted">KRA Website → Foreign Exchange Rates → download latest weekly PDF available at invoice time.</div>
+          </div>
+        </div>
+
+        <div class="check"><div class="dot"></div>
+          <div>
+            <strong>Convert USD → KES</strong>
+            <div class="muted">KES = USD × KRA rate (2 decimals).</div>
+          </div>
+        </div>
+
+        <div class="code" id="calcExample">
+USD amount: [Your amount]
+KRA rate:   [Current rate]
+KES amount: [Calculated amount]
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:14px;">
+      <h3>Monthly invoice steps (repeat each month)</h3>
+
+      <ol class="steps">
+        <li><strong>Pick your invoice issue date</strong> (the day you create it).</li>
+        <li><strong>Fetch the official KRA weekly USD/KES rate</strong> that's published for that time.</li>
+        <li><strong>Convert:</strong> KES = USD amount × KRA rate (round to 2 decimals).</li>
+        <li>In eTIMS: <strong>Transaction Management → Sales Receipt → Add</strong>.</li>
+        <li>Fill buyer details (PIN, name, mobile) and set <strong>Payment Type: CREDIT</strong>.</li>
+        <li>Add your registered service item:
+          <ul>
+            <li><strong>Quantity:</strong> 1</li>
+            <li><strong>Unit price (VAT incl):</strong> the converted KES amount</li>
+            <li><strong>Tax type:</strong> D – Non VAT</li>
+          </ul>
+        </li>
+        <li><strong>Paste the exchange-rate note</strong> in Non-Fiscal Data (use the copy button above).</li>
+        <li><strong>Save</strong> and confirm status shows <strong>Approved</strong>.</li>
+        <li><strong>Download PDF:</strong> from the list, click <strong>Receipt No</strong> → <strong>Receipt</strong> (or Invoice No → Print/PDF depending on your view).</li>
+        <li><strong>Send</strong> the PDF to Finance/your manager.</li>
+      </ol>
+
+      <div class="callout" style="margin-top:14px;">
+        <strong>Non-Fiscal Data note template</strong>
+        <div class="code" id="noteTemplate">USD [Your amount] converted using latest KRA weekly exchange rate (USD/KES [Current rate]) published at time of invoicing.</div>
+        <div class="muted" style="margin-top:8px;">Update the USD amount and KRA rate each month based on the official weekly rate.</div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:14px;">
+      <h3>Fixing mistakes: Credit note → re-issue</h3>
+      <ol class="steps">
+        <li>Open the incorrect invoice (from <strong>Sales Receipt</strong> list).</li>
+        <li>Click <strong>Credit Note</strong> → choose <strong>Other</strong> reason.</li>
+        <li>Remarks: <span class="muted">"Correction to apply official KRA exchange rate / correction of amount."</span></li>
+        <li>Save the credit note (it should show approved).</li>
+        <li>Create a new invoice with the corrected KES amount and the note template.</li>
+      </ol>
+    </section>
+
+    <footer>
+      <div>Signed: <strong>Tindi Mercy</strong></div>
+      <div class="muted">Keep this page bookmarked. Update only the weekly KRA rate + converted KES amount.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Theme: default to system preference; allow manual toggle; store in localStorage.
+    const root = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    const icon = document.getElementById('themeIcon');
+    const label = document.getElementById('themeLabel');
+
+    function applyTheme(theme){
+      root.setAttribute('data-theme', theme);
+      icon.textContent = theme === 'light' ? '☀️' : '🌙';
+      label.textContent = theme === 'light' ? 'Light' : 'Dark';
+      localStorage.setItem('theme', theme);
+    }
+
+    const saved = localStorage.getItem('theme');
+    if(saved){
+      applyTheme(saved);
+    } else {
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      applyTheme(prefersLight ? 'light' : 'dark');
+    }
+
+    btn.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // Copy note template
+    const copyBtn = document.getElementById('copyBtn');
+    const note = document.getElementById('noteTemplate');
+
+    copyBtn.addEventListener('click', async () => {
+      const text = note.textContent.trim();
+      try{
+        await navigator.clipboard.writeText(text);
+        copyBtn.innerHTML = '✅ <small>Copied</small>';
+        setTimeout(() => copyBtn.innerHTML = '📋 <small>Copy note</small>', 1200);
+      } catch(e){
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        copyBtn.innerHTML = '✅ <small>Copied</small>';
+        setTimeout(() => copyBtn.innerHTML = '📋 <small>Copy note</small>', 1200);
+      }
+    });
+  </script>
+</body>
+</html>
