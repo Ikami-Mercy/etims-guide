@@ -3,13 +3,97 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="A simple step-by-step guide for issuing compliant eTIMS invoices in Kenya (KRA exchange rates, credit notes, download steps)." />
-  <title>eTIMS Invoice Steps (Kenya) — Tindi Mercy</title>
   
-  <!-- Beautiful fonts -->
+  <!-- SEO Meta Tags -->
+  <title>eTIMS Invoice Guide Kenya - KRA Exchange Rate Calculator | Step-by-Step Tutorial</title>
+  <meta name="description" content="Complete guide for creating compliant eTIMS invoices in Kenya. Auto-calculate KES amounts using official KRA exchange rates. Includes troubleshooting, credit notes, and monthly workflow for freelancers and consultants." />
+  <meta name="keywords" content="eTIMS Kenya, KRA invoice, KRA exchange rate, eTIMS guide, Kenya tax invoice, eTIMS tutorial, KRA eTIMS, invoice Kenya, tax compliance Kenya, eTIMS calculator, freelancer Kenya, consultant invoicing" />
+  <meta name="author" content="Tindi Mercy" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ikami-mercy.github.io/etims-guide/" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="eTIMS Invoice Guide Kenya - KRA Exchange Rate Calculator" />
+  <meta property="og:description" content="Interactive step-by-step guide for creating compliant eTIMS invoices in Kenya with auto-calculating KRA exchange rates." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ikami-mercy.github.io/etims-guide/" />
+  <meta property="og:site_name" content="eTIMS Invoice Guide Kenya" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="eTIMS Invoice Guide Kenya - KRA Exchange Rate Calculator" />
+  <meta name="twitter:description" content="Complete guide for creating compliant eTIMS invoices in Kenya with auto-calculating exchange rates." />
+  
+  <!-- Elegant fonts: Rouge Script, Lora, Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Create eTIMS Invoices in Kenya",
+    "description": "Complete step-by-step guide for creating compliant eTIMS invoices in Kenya using official KRA exchange rates",
+    "author": {
+      "@type": "Person",
+      "name": "Tindi Mercy"
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Pick invoice issue date",
+        "text": "Choose the day you create the invoice"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Fetch KRA exchange rate",
+        "text": "Get the official KRA weekly USD/KES rate published for that time"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Convert to KES",
+        "text": "Calculate KES = USD amount × KRA rate (round to 2 decimals)"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Create invoice in eTIMS",
+        "text": "Navigate to Transaction Management → Sales Receipt → Add"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Fill buyer details",
+        "text": "Enter buyer PIN, name, mobile and set Payment Type to CREDIT"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Add service item",
+        "text": "Add registered service item with quantity 1 and calculated KES amount"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Add exchange rate note",
+        "text": "Paste the exchange-rate note in Non-Fiscal Data field"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Save and approve",
+        "text": "Save the invoice and confirm status shows Approved"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Download PDF",
+        "text": "Click Receipt No then Receipt button to download the invoice PDF"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Submit invoice",
+        "text": "Send the PDF to Finance or your manager"
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -26,8 +110,10 @@
       --shadow-lg: 0 20px 50px rgba(0,0,0,0.45);
       --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      --radius: 18px;
-      --radius-sm: 12px;
+      --serif: 'Lora', Georgia, Cambria, "Times New Roman", Times, serif;
+      --script: 'Rouge Script', cursive;
+      --radius: 20px;
+      --radius-sm: 14px;
     }
 
     [data-theme="light"]{
@@ -42,21 +128,24 @@
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
-    html{ scroll-behavior: smooth; }
+    html{ 
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
     html,body{ height:100%; }
     body{
-      font-family: var(--sans);
+      font-family: var(--serif);
       background:
         radial-gradient(1200px 700px at 10% 10%, rgba(124,58,237,0.18), transparent 55%),
         radial-gradient(1000px 600px at 90% 15%, rgba(34,197,94,0.14), transparent 55%),
         radial-gradient(900px 600px at 60% 95%, rgba(59,130,246,0.12), transparent 55%),
         var(--bg);
       color: var(--text);
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       font-feature-settings: 'liga' 1, 'calt' 1;
-      font-size: 16.5px;
+      font-size: 17px;
     }
 
     a{ color: inherit; text-decoration: none; }
@@ -77,14 +166,28 @@
 
     /* TOPBAR */
     .topbar{
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: var(--bg);
-      backdrop-filter: blur(12px);
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-      margin-bottom: 32px;
+      padding: 18px 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .topbar{
+      background: rgba(247, 247, 251, 0.85);
+    }
+    .topbar.scrolled{
+      padding: 12px 0;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+    /* Add padding to body to account for fixed header */
+    body{
+      padding-top: 90px;
     }
     .topbar-inner{
       max-width: 1400px;
@@ -110,16 +213,19 @@
       flex-shrink: 0;
     }
     .brand h1{
-      font-size: 18px;
-      letter-spacing: -0.02em;
-      font-weight: 700;
+      font-family: var(--script);
+      font-size: 28px;
+      letter-spacing: 0.02em;
+      font-weight: 400;
       margin: 0;
+      line-height: 1;
     }
     .brand p{
+      font-family: var(--sans);
       font-size: 13px;
       color: var(--muted);
       font-weight: 500;
-      margin: 2px 0 0;
+      margin: 4px 0 0;
     }
 
     .controls{
@@ -133,9 +239,9 @@
       background: var(--card);
       color: var(--text);
       border-radius: 999px;
-      padding: 10px 16px;
+      padding: 11px 18px;
       cursor: pointer;
-      transition: all .15s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       gap: 8px;
       align-items: center;
@@ -146,10 +252,10 @@
     }
     .btn:hover{
       background: var(--card2);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
     }
-    .btn:active{ transform: scale(0.98); }
+    .btn:active{ transform: translateY(0) scale(0.98); }
     .btn small{ color: var(--muted); font-weight: 600; }
 
     /* SIDEBAR TOC */
@@ -205,6 +311,7 @@
     /* MAIN CONTENT */
     .main{
       padding-bottom: 80px;
+      margin-top: 32px;
     }
 
     .hero{
@@ -222,18 +329,21 @@
       margin-bottom: 24px;
     }
     .hero h2{
-      margin: 0 0 10px;
-      font-size: 32px;
+      margin: 0 0 12px;
+      font-family: var(--serif);
+      font-size: 36px;
       font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
     }
     .hero p{
       margin: 0;
+      font-family: var(--sans);
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 400;
       max-width: 70ch;
-      font-size: 15px;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     /* INVOICE INPUTS SECTION */
@@ -247,9 +357,10 @@
       margin-bottom: 24px;
     }
     .invoice-inputs h3{
-      font-size: 18px;
+      font-family: var(--serif);
+      font-size: 22px;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -277,17 +388,18 @@
       background: var(--card2);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 10px 14px;
+      padding: 12px 16px;
       color: var(--text);
       font-family: var(--sans);
       font-size: 15px;
       font-weight: 500;
-      transition: all .15s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .input-group input:focus{
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+      box-shadow: 0 0 0 4px rgba(124,58,237,0.12);
+      transform: translateY(-1px);
     }
     .calculated{
       background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(34,197,94,0.1));
@@ -329,23 +441,29 @@
       margin-top: 20px;
     }
     @media (min-width: 860px){
-      .grid{ grid-template-columns: 1.2fr 0.8fr; }
+      .grid{ grid-template-columns: 1fr 1fr; }
     }
 
     .card{
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 28px;
       box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06);
       backdrop-filter: blur(10px);
-      scroll-margin-top: 100px;
+      scroll-margin-top: 120px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card:hover{
+      box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.08);
+      transform: translateY(-2px);
     }
     .card h3{
-      margin: 0 0 16px;
-      font-size: 20px;
+      margin: 0 0 18px;
+      font-family: var(--serif);
+      font-size: 22px;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -445,17 +563,19 @@
     .check{
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      padding: 14px;
+      gap: 14px;
+      padding: 16px;
       border-radius: var(--radius-sm);
       border: 1px dashed var(--border);
       background: rgba(255,255,255,0.02);
-      margin: 10px 0;
-      transition: all .15s ease;
+      margin: 12px 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .check:hover{
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       border-style: solid;
+      border-color: var(--accent2);
+      transform: translateX(4px);
     }
     .dot{
       width: 12px;
@@ -871,6 +991,7 @@
     const themeBtn = document.getElementById('themeBtn');
     const themeIcon = document.getElementById('themeIcon');
     const themeLabel = document.getElementById('themeLabel');
+    const topbar = document.querySelector('.topbar');
 
     function applyTheme(theme){
       root.setAttribute('data-theme', theme);
@@ -890,6 +1011,20 @@
     themeBtn.addEventListener('click', () => {
       const current = root.getAttribute('data-theme') || 'dark';
       applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // ========== TOPBAR SCROLL ANIMATION ==========
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > 50) {
+        topbar.classList.add('scrolled');
+      } else {
+        topbar.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
     });
 
     // ========== INVOICE INPUTS ==========
