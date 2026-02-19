@@ -11,7 +11,10 @@
   <meta name="author" content="Tindi Mercy" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://ikami-mercy.github.io/etims-guide/" />
-  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="eTIMS Invoice Guide Kenya - KRA Exchange Rate Calculator" />
   <meta property="og:description" content="Interactive step-by-step guide for creating compliant eTIMS invoices in Kenya with auto-calculating KRA exchange rates." />
@@ -672,6 +675,33 @@
       font-size: 13px;
     }
     footer strong{ color: var(--text); }
+
+    /* MOBILE ADJUSTMENTS */
+    @media (max-width: 768px) {
+      /* Hide print button on mobile */
+      #printBtn {
+        display: none;
+      }
+
+      /* Make theme button icon-only on mobile */
+      #themeBtn small {
+        display: none;
+      }
+
+      /* Hide subtitle on mobile to reduce crowding */
+      .brand p {
+        display: none;
+      }
+
+      /* Add more spacing between header and first section */
+      body {
+        padding-top: 110px;
+      }
+
+      .main {
+        margin-top: 40px;
+      }
+    }
 
     /* PRINT STYLES */
     @media print{
