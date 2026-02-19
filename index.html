@@ -693,6 +693,24 @@
         display: none;
       }
 
+      /* Mobile app bar layout - logo on right */
+      .topbar-inner {
+        flex-direction: row-reverse;
+      }
+
+      .brand {
+        flex-direction: row-reverse;
+      }
+
+      .brand h1 {
+        font-size: 18px;
+      }
+
+      .logo {
+        width: 36px;
+        height: 36px;
+      }
+
       /* Add more spacing between header and first section */
       body {
         padding-top: 110px;
@@ -700,6 +718,20 @@
 
       .main {
         margin-top: 40px;
+      }
+
+      /* Simplify Copy KES button on mobile */
+      #copyKesBtn {
+        font-size: 0;
+      }
+
+      #copyKesBtn::before {
+        content: "Copy Amount";
+        font-size: 14px;
+      }
+
+      #copyKesBtn small {
+        display: none;
       }
     }
 
