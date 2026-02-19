@@ -693,22 +693,30 @@
         display: none;
       }
 
-      /* Mobile app bar layout - logo on right */
+      /* Mobile app bar layout */
       .topbar-inner {
-        flex-direction: row-reverse;
+        justify-content: space-between;
       }
 
       .brand {
-        flex-direction: row-reverse;
+        order: 1;
+        gap: 10px;
       }
 
       .brand h1 {
-        font-size: 18px;
+        font-size: 16px;
+        order: 1;
       }
 
       .logo {
         width: 36px;
         height: 36px;
+        order: 2;
+      }
+
+      .controls {
+        order: 2;
+        margin-left: auto;
       }
 
       /* Add more spacing between header and first section */
